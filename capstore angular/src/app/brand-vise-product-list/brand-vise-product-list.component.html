@@ -1,0 +1,91 @@
+<div class="form-group mt-2" style="margin-left: 120px;">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-dark text-light">
+                Search Product
+            </span>
+        </div>
+
+        <span style="width: 70%; ">
+            <input type="search" name="searchProductbyName" id="searchProductbyName" placeholder="Enter product Name..."
+                [(ngModel)]='searchProductbyName' class="form-control">
+        </span>
+
+        <!-- <div>
+            <button (click)="getsortedpricelist()">
+                high to low price
+            </button>
+        </div> -->
+
+    </div>
+
+</div>
+
+<div *ngIf="productListbyBrand">
+
+    <!-- <div class="card card-body float-left" style="height: 420px; width: 360px;">
+
+            <img src="{{product.productImage}}" style="align-items: center;" alt="" class="img-fluid"
+                style="height: 200px; width: 300px;">
+
+            <label for="productName" style="text-align: center;">
+                <h4>{{product.productName}}</h4>
+            </label>
+            <label for="productId">{{product.productId}}</label>
+
+            <label for="productPrice">{{product.productPrice}}</label>
+            <label for="productQuantity">{{product.productQuantity}}</label>
+
+            <label>{{product.productCategory}}</label>
+
+            <label>{{product.productDiscount}}</label>
+            <label>{{product.productDiscountExpireDate}}</label>
+            <label>{{product.brandName}}</label>
+            <label>{{product.email}}</label>
+        </div> -->
+    <div class="container mt-5" style="margin-left: 50px;">
+        <table class="table table-bordered table-hover" >
+            <thead class="thead-danger">
+                <tr>
+                    <th  *ngFor="let col of headerName ">
+
+                        <a class="link" (click)="sortedColumn = col"><u>{{col}}</u></a>
+                    </th>
+                 
+                    <!-- <th>productName</th>
+                    <th >
+                       productPrice 
+                    </th>
+                    <th>productQuantity</th>
+
+                    <th>productCategory</th>
+                    <th>productDiscount</th>
+                   
+                    <th>brandName</th>
+                    <th>email</th>
+                    <th>productImage</th> -->
+                   
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productListbyBrand | sortPrice : sortedColumn | searchProduct :searchProductbyName">
+                    <!-- <td>{{product.productId}}</td> -->
+                    <td>{{product.productName}}</td>
+                    <td>{{product.productPrice}}</td>
+                    <!-- <td>{{product.productQuantity}}</td>
+
+                    <td>{{product.productCategory}}</td>
+                    <td>{{product.productDiscount}}</td>
+
+                     <td>{{product.productDiscountExpireDate}}</td> 
+                    <td>{{product.brandName}}</td>
+                    <td>{{product.email}}</td>
+                    <td><img src="{{product.productImage}}" style="align-items: center;" alt="" class="img-fluid"
+                            style="height: 200px; width: 300px;"></td> -->
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

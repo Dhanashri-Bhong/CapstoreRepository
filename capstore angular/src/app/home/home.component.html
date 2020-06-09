@@ -1,0 +1,52 @@
+<!-- search product from product  list -->
+<div class="form-group mt-2">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text bg-dark text-light">
+                Search Product
+            </span>
+        </div>
+
+        <span style="width: 50%; ">
+            <input type="search" name="searchProductbyName" id="searchProductbyName" placeholder="Enter product Name..."
+                [(ngModel)]='searchProductbyName' class="form-control">
+        </span>
+
+        <div style="width: 10%; ">
+            <select name="brandName" class="form-control" [(ngModel)]="BrandName" (change)="selectedBrandName()" >
+                <option selected disabled>Select Brand</option>
+
+                <option *ngFor='let productbrandName of productBrandList' [ngValue]="productbrandName">{{productbrandName}}</option>
+
+            </select>
+
+        </div>
+    </div>
+
+</div>
+
+<div *ngFor='let product of productList | searchProduct :searchProductbyName'>
+    <div class="card card-body float-left" style="height: 590px; width: 330px;">
+
+        <!-- <img src="{{product.productImage}}" style="align-items: center;" alt="" class="img-fluid"
+            style="height: 200px; width: 300px;"> -->
+            <img [src]="product.productImage" class="img-fluid" style=" height:190px;width:300px;">
+
+        <label for="productName" style="text-align: center;">
+            <h4>{{product.productName}}</h4>
+        </label>
+        <label for="productId" style="align-items: center;">PRODUCT ID  : {{product.productId}}</label>
+
+        <label for="productPrice" style="align-items: center;">PRICE  : {{product.productPrice}}</label>
+        <label for="productQuantity" style="align-items: center;">QUANTITY  : {{product.productQuantity}}</label>
+
+        <label style="align-items: center;">CATEGORY  : {{product.productCategory}}</label>
+
+        <label style="align-items: center;">DISCOUNT  : {{product.productDiscount}}</label>
+        <label>DISCOUNT EXPIRE DATE  :{{product.productDiscountExpireDate}}</label>
+        <label style="align-items: center;">BRAND NAME  : {{product.brandName}}</label>
+        <label style="align-items: center;">RATING  : {{product.productRating}}</label>
+        <label>EMAIL  :{{product.email}}</label>
+        <button style="height: 50px;width:270px" class="btn btn-outline-success" (click)='selectProduct(product)' >BUY NOW</button>
+    </div>
+</div>
